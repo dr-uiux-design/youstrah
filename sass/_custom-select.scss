@@ -1,0 +1,102 @@
+/* ------------------- Custom Select -------------------- */
+input[type="radio"] {
+  display: none;
+}
+
+.custom-select {
+  position: relative;
+
+  &__name {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    color: #6c757d;
+    background: #fff;
+    padding: 0 5px;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    transform: translateY(-50%);
+  }
+
+  &__selected {
+    width: 100%;
+    height: 55px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-title);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d0d5dd;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+  }
+
+  &__selected::after {
+    content: "";
+    position: absolute;
+    top: 53%;
+    transform: translateY(-50%);
+    right: 15px;
+    width: 1.125rem;
+    height: 1.125rem;
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAxOSAxOSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZyBpZD0iOTM2OTgwZjciPgogICAgPHBhdGggaWQ9IjRkMWM0OTZiIiBkPSJNNSA3LjI1TDkuNSAxMS43NUwxNCA3LjI1IiBzdHJva2U9IiM0RjRGNEYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+CiAgPC9nPgo8L3N2Zz4=");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.4s;
+  }
+
+  &__options {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #f2f4f7;
+    box-shadow: 0px 16px 32px rgba(77, 83, 103, 0.16);
+    border-radius: 8px;
+    width: 100%;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding-top: 0;
+    opacity: 0;
+    z-index: 10;
+  }
+
+  &__options.active {
+    max-height: 200px;
+    opacity: 1;
+    overflow-y: scroll;
+  }
+
+  &__options.active + .custom-select__selected::after {
+    transform: rotateX(180deg) translateY(50%);
+  }
+
+  &__options::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &__options::-webkit-scrollbar-thumb {
+    background-color: #eec40d;
+    border-radius: 6px;
+  }
+
+  &__option {
+    color: var(--color-body-text);
+    display: block;
+    padding: 16px;
+    cursor: pointer;
+  }
+
+  &__option:hover {
+    background-color: #f5f5f5;
+  }
+}
