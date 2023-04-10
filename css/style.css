@@ -270,16 +270,15 @@ h4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
 .navbar .top-menu a {
+  display: inline-block;
   color: #4f4f4f;
   text-decoration: none;
-  margin-right: calc(10px + 1.5789473684vw);
+}
+.navbar .top-menu a:not(:last-child) {
+  margin-right: 24px;
 }
 
 .navbar .top-menu a:last-child {
@@ -296,7 +295,7 @@ h4 {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0;
   color: #4f4f4f;
   text-decoration: none;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -324,7 +323,7 @@ h4 {
 }
 
 .header__content {
-  margin-bottom: calc(20px + 2.6315789474vw);
+  margin: clamp(1.5rem, 0.935rem + 2.82vw, 3rem);
 }
 
 .header__content h1 {
@@ -1060,7 +1059,7 @@ h4 {
   .navbar__container {
     -webkit-box-pack: justify !important;
     -ms-flex-pack: justify !important;
-    justify-content: space-between !important;
+    justify-content: center;
   }
   .navbar .top-menu {
     display: none;
