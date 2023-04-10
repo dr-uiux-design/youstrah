@@ -3654,11 +3654,16 @@ input[type=radio] {
   max-width: inherit !important;
   margin-bottom: 35px !important;
   color: #313132;
-  font-size: clamp(1.5rem, 1.244rem + 1.28vw, 2.188rem);
+  font-size: clamp(1.5rem, 1.244rem + 1.28vw, 2.188rem) !important;
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: clamp(0.938rem, 0.472rem + 2.33vw, 2.188rem);
+  margin-bottom: clamp(1.25rem, 0.472rem + 2.33vw, 2.188rem) !important;
   text-align: left !important;
+}
+@media (max-width: 567px) {
+  .form-calc__title {
+    text-align: center !important;
+  }
 }
 .form-calc__group {
   position: relative;
@@ -3773,26 +3778,18 @@ input[type=radio] {
 
 @-webkit-keyframes animate {
   from {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
     opacity: 0;
   }
   to {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
     opacity: 1;
   }
 }
 
 @keyframes animate {
   from {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
     opacity: 0;
   }
   to {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
     opacity: 1;
   }
 }
@@ -3873,8 +3870,4 @@ input[type=radio] {
 }
 .radio-button:hover {
   border: 1px solid #eec40d !important;
-}
-
-.radio-button__input:checked + .radio-button {
-  background: #ffe0a6;
 }/*# sourceMappingURL=style.css.map */
