@@ -34,7 +34,8 @@ function throttle(callback, limit) {
 }
 
 var insuranceDate = document.getElementById('insurance-date');
-var categoryChange = document.querySelectorAll('.category-buttons input');
+// var categoryChange = document.querySelectorAll('.category-buttons input');
+var categoryChange = document.querySelectorAll('.category-buttons span');
 var categoryValue = document.getElementById('category-value');
 var trailerWrap = document.getElementById('trailer-wrap');
 var brandSelect = document.getElementById('brand-select');
@@ -1435,6 +1436,8 @@ document.querySelectorAll('#insurance-date, #vehicle-document-date, #insurant-bi
   });
 });
 
+const radioLimit = document.querySelector('.btn-limit');
+const radioUnLimit = document.querySelector('.btn-umlimit');
 driversCountChange.forEach(function (el) {
   el.addEventListener('change', function (e) {
     driversCount = e.target.value;
@@ -1442,9 +1445,14 @@ driversCountChange.forEach(function (el) {
     if (driversCount === 'unlimited') {
       drivers.classList.remove('show');
       addDriver.style.display = 'none';
+			radioLimit.classList.remove('is-active');
+			radioUnLimit.classList.add('is-active');
+      
     } else {
       drivers.classList.add('show');
       addDriver.style.display = 'block';
+			radioLimit.classList.add('is-active');
+			radioUnLimit.classList.remove('is-active');
     }
   });
 });
