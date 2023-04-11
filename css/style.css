@@ -270,15 +270,17 @@ h4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .navbar .top-menu a {
   display: inline-block;
   color: #4f4f4f;
   text-decoration: none;
-}
-.navbar .top-menu a:not(:last-child) {
-  margin-right: 24px;
+  margin-right: calc(10px + 1.5789473684vw) !important;
 }
 
 .navbar .top-menu a:last-child {
@@ -295,6 +297,7 @@ h4 {
 
 .nav-link {
   display: block;
+  padding: 0.5rem 1rem !important;
   padding: 0;
   color: #4f4f4f;
   text-decoration: none;
@@ -1059,10 +1062,13 @@ h4 {
   .navbar__container {
     -webkit-box-pack: justify !important;
     -ms-flex-pack: justify !important;
-    justify-content: center;
+    justify-content: space-between !important;
   }
   .navbar .top-menu {
     display: none;
+  }
+  .navbar-toggler {
+    display: block !important;
   }
 }
 @media (max-width: 767.98px) {
