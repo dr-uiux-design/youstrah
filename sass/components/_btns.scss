@@ -1,0 +1,133 @@
+.btn-groups {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 480px) {
+    .my-btn {
+      width: 50%;
+      padding: 15px 20px;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.btn-reset {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.my-btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px !important;
+  background-color: var(--color-main) !important;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    top 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    color: #fff !important;
+    background-color: var(--color-body-text) !important;
+  }
+
+  &:active {
+    top: 2px;
+  }
+
+  &--stroke {
+    color: var(--color-body-text) !important;
+    background-color: transparent !important;
+    border: 1.5px solid var(--color-main) !important;
+
+    &:hover {
+      color: #fff !important;
+      background-color: var(--color-body-text) !important;
+      border: 1.5px solid transparent !important;
+    }
+
+    .btn-icon {
+      color: var(--color-main) !important;
+    }
+
+    &:hover .btn-icon {
+      color: #fff !important;
+    }
+  }
+}
+
+.btn-next .btn-icon {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+// Btn Icons
+.btn-icon {
+  flex-shrink: 0;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+// Кнопка Назад
+.btn-prev {
+  border: 1.5px solid #d0d5dd;
+  color: #6c757d;
+  background-color: transparent !important;
+  transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+
+  &:hover {
+    color: var(--color-title) !important;
+    border: 1.5px solid var(--color-main) !important;
+    background-color: transparent;
+  }
+}
+
+// Кнопка Удалить
+.btn-delete {
+  color: var(--color-error) !important;
+  background-color: transparent !important;
+  border: 1.5px solid var(--color-error) !important;
+
+  &:hover {
+    color: #fff !important;
+    background-color: var(--color-error) !important;
+    border: 1.5px solid transparent !important;
+  }
+
+  .btn-icon {
+    color: var(--color-error) !important;
+  }
+}
+
+.btn-copy,
+.btn-delete {
+  width: 100%;
+  font-size: 15px;
+  padding: 10px 20px !important;
+  padding: 10px 20px !important;
+}
+
+.add-driver__btn {
+  width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+
+  @media (max-width: 800px) {
+    max-width: 100%;
+    margin: auto;
+  }
+}

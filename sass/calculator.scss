@@ -1,90 +1,12 @@
-@import "./custom-select";
-
-.is-hidden {
-  display: none;
-}
-
-.category {
-  margin-bottom: 20px;
-}
-
-// form
-.form-control,
-.form-select {
-  width: 100%;
-  color: #4f4f4f;
-  border: 1px solid #d0d5dd;
-  border-radius: 0.5rem;
-  padding: 0.9375rem 1.25rem;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-
-  &:focus {
-    border: 1px solid #eec40d;
-  }
-}
-
-.form-label {
-  transform: translate(20px, 18px) scale(1);
-  color: #667085;
-}
-
-.form-control:focus + label,
-.form-control:not(:placeholder-shown) + label {
-  cursor: default;
-  top: -5px;
-  left: 15px;
-  transition: top 0.2s;
-  // background: #fff;
-  color: #6c757d;
-  font-weight: 400;
-  font-size: 14px;
-  padding: 0 5px;
-}
-
-.form-select:disabled {
-  background-color: #f5f6f8;
-}
-
-// .invalid-feedback {
-//   position: absolute;
-// }
-
-.form-control:disabled,
-.form-control[readonly].form-label {
-  background-color: none;
-}
-
-.form-check-input {
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 1px solid #d0d5dd;
-  border-radius: 4px;
-}
-
-.form-check-label {
-  line-height: 1.2;
-  position: relative;
-  top: 0.25rem;
-  left: 0.375rem;
-}
-
-#trailer-wrap {
-  padding: 15px 0;
-  padding-top: 10px;
-}
-
-#model-custom-wrap {
-  margin-top: 3px;
-}
-
-#brand-model-custom {
-  margin-top: 0.3125rem;
-}
+@import "./vars";
+@import "./components/custom-select";
+@import "./components/custom-radio";
+@import "./components/custom-checkbox";
+@import "./components/btns";
+@import "./edit-styles";
 
 /* ------------------- Form Calculator -------------------- */
-.form-calc {
+.calculator {
   font-family: "Roboto", sans-serif;
   width: 100%;
   background-color: #fff;
@@ -107,11 +29,19 @@
     max-width: inherit !important;
     margin-bottom: 35px !important;
     color: #313132;
-    font-size: clamp(1.5rem, 1.244rem + 1.28vw, 2.188rem);
+    font-size: clamp(1.5rem, 1.244rem + 1.28vw, 2.188rem) !important;
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: clamp(0.938rem, 0.472rem + 2.33vw, 2.188rem);
+    margin-bottom: clamp(1.25rem, 0.472rem + 2.33vw, 2.188rem) !important;
     text-align: left !important;
+
+    @media (max-width: 567px) {
+      text-align: center !important;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 0 !important;
   }
 
   &__group {
@@ -119,6 +49,7 @@
   }
 
   &__btns {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -126,11 +57,35 @@
 
   &__btn {
     border-radius: 8px;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    @media (max-width: 480px) {
+      width: 50%;
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .btn-prev {
+    margin-right: 20px;
+  }
+
+  .calculate {
+    text-align: center !important;
+  }
+
+  @media (max-width: 480px) {
+    &__btn {
+      width: 50%;
+    }
   }
 }
 
 /* Progressbar */
-.form-calc__progressbar {
+.calculator__progressbar {
   display: flex;
   justify-content: space-between;
   counter-reset: step;
@@ -196,7 +151,7 @@
 }
 
 // Steps
-.form-calc__steps {
+.calculator__steps {
   &-title {
     font-size: clamp(1.125rem, 0.985rem + 0.7vw, 1.5rem);
     font-weight: 500;
@@ -205,7 +160,7 @@
   }
 }
 
-.form-calc__step {
+.calculator__step {
   display: none;
   transform-origin: top;
   animation: animate 0.5s;
@@ -217,11 +172,9 @@
 
 @keyframes animate {
   from {
-    transform: scale(1, 0);
     opacity: 0;
   }
   to {
-    transform: scale(1, 1);
     opacity: 1;
   }
 }
@@ -233,8 +186,11 @@
 
 // buttons
 .btn-prev {
+  text-align: center;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 55px;
   line-height: 52px;
   padding: 0px 30px;
@@ -252,8 +208,11 @@
 }
 
 .btn-next {
+  text-align: center;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 55px;
   line-height: 52px;
   padding: 0px 30px;
@@ -271,11 +230,7 @@
   }
 }
 
-// custom radio
-.radio-buttons {
-  margin-bottom: clamp(0.938rem, 0.821rem + 0.58vw, 1.25rem);
-}
-.radio-button {
+.drivers-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -291,16 +246,57 @@
   font-weight: 400;
   margin-right: 0;
 
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
   &:hover {
     border: 1px solid #eec40d !important;
   }
-}
 
-// .radio-buttons input[type="radio"]:checked .radio-button {
-//   background: #ffe0a6;
-// }
+  .dot {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #d0d5dd;
+    margin-right: 12px;
+    position: relative;
+    transition: border 0.2s ease-in-out;
 
-// Checked
-.radio-button__input:checked + .radio-button {
-  background: #ffe0a6;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #eec40d;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      visibility: visible;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+
+  &.is-active {
+    border: 1.5px solid #eec40d;
+    font-size: 16px;
+    font-weight: 500;
+
+    .dot {
+      border: 3px solid #eec40d;
+      &::before {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+    }
+  }
 }

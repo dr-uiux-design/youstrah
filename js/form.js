@@ -34,8 +34,7 @@ function throttle(callback, limit) {
 }
 
 var insuranceDate = document.getElementById('insurance-date');
-// var categoryChange = document.querySelectorAll('.category-buttons input');
-var categoryChange = document.querySelectorAll('.category-buttons span');
+var categoryChange = document.querySelectorAll('.category-buttons input');
 var categoryValue = document.getElementById('category-value');
 var trailerWrap = document.getElementById('trailer-wrap');
 var brandSelect = document.getElementById('brand-select');
@@ -691,7 +690,7 @@ categoryChange.forEach(function (el) {
       document.getElementById('trailer').checked = false;
       trailerWrap.style.display = 'none';
     } else {
-      trailerWrap.style.display = 'inline-flex';
+      trailerWrap.style.display = 'block';
     }
 
     brand = null;
@@ -956,11 +955,15 @@ vehicleDocumentTypeSelect.addEventListener('change', function (e) {
   }
 });
 
+const plateLabel = document.querySelector('.plate-label');
+
 plateless.addEventListener('change', function (e) {
   if (e.target.checked) {
     plate.disabled = true;
+		plateLabel.classList.add('disabled');
   } else {
     plate.disabled = false;
+		plateLabel.classList.remove('disabled');
   }
 });
 
@@ -1436,6 +1439,7 @@ document.querySelectorAll('#insurance-date, #vehicle-document-date, #insurant-bi
   });
 });
 
+// Выботр водителей
 const radioLimit = document.querySelector('.btn-limit');
 const radioUnLimit = document.querySelector('.btn-umlimit');
 driversCountChange.forEach(function (el) {
@@ -1511,11 +1515,11 @@ function copyOwnerToDriver(driver) {
   return driver;
 }
 
-driverPrototype.querySelector('.copy-insurant > div').addEventListener('click', function (e) {
+driverPrototype.querySelector('.copy-insurant > button').addEventListener('click', function (e) {
   copyInsurantToDriver(driverPrototype);
 });
 
-driverPrototype.querySelector('.copy-owner > div').addEventListener('click', function (e) {
+driverPrototype.querySelector('.copy-owner > button').addEventListener('click', function (e) {
   copyOwnerToDriver(driverPrototype);
 });
 
@@ -1527,7 +1531,7 @@ addDriver.children[0].addEventListener('click', function (e) {
   }
 
   if (driversCount >= 3) {
-    addDriver.children[0].classList.remove('btn-primary');
+    addDriver.children[0].classList.remove('btn-copy');
     addDriver.children[0].classList.add('btn-default');
     addDriver.style.display = 'none';
   }
@@ -1729,9 +1733,9 @@ addDriver.children[0].addEventListener('click', function (e) {
     validate(e.target, false, true);
   });
 
-  var copyInsurant = newDriver.querySelector('.copy-insurant > div');
-  var copyOwner = newDriver.querySelector('.copy-owner > div');
-  var deleteDriver = newDriver.querySelector('.delete-driver > div');
+  var copyInsurant = newDriver.querySelector('.copy-insurant > button');
+  var copyOwner = newDriver.querySelector('.copy-owner > button');
+  var deleteDriver = newDriver.querySelector('.delete-driver > button');
   deleteDriver.style.display = 'block';
   deleteDriver.classList.remove('btn-default');
   deleteDriver.classList.add('btn-danger');
@@ -1757,8 +1761,8 @@ addDriver.children[0].addEventListener('click', function (e) {
     var driversCount = drivers.children.length;
 
     if (driversCount <= 4) {
-      addDriver.children[0].classList.add('btn-primary');
-      addDriver.children[0].classList.remove('btn-default');
+      addDriver.children[0].classList.add('btn-copy');
+      addDriver.children[0].classList.remove('btn-delete');
       addDriver.style.display = 'block';
     }
 
